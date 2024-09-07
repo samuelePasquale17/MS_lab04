@@ -1,0 +1,12 @@
+vcom -reportprogress 300 -work work ./myTypes.vhd
+vcom -reportprogress 300 -work work ./CU_FSM.vhd
+vcom -reportprogress 300 -work work ./tb_CU_FSM.vhd
+vsim work.cfg_tb_cu_fsm -t 10ps -voptargs=+acc
+add wave sim:/tb_cu_fsm/Clk_s
+add wave sim:/tb_cu_fsm/Rst_s
+add wave sim:/tb_cu_fsm/opcode_s
+add wave sim:/tb_cu_fsm/func_s
+add wave sim:/tb_cu_fsm/control_word_s 
+add wave sim:/tb_cu_fsm/correct_word
+add wave sim:/tb_cu_fsm/err
+run 1500 ns
